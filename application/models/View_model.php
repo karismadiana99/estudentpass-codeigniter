@@ -60,7 +60,7 @@ class View_model extends CI_Model
 
     public function getApplicant($user_id)
     {
-        $this->db->select('user_id, app_nric, app_fullname, app_gender, app_placebirth, app_nationality, app_status, issued_date, expired_date, reason_reject');
+        $this->db->select('user_id, app_nric, app_fullname, app_gender, app_placebirth, app_nationality, app_status, type_application, issued_date, expired_date, reason_reject');
         $this->db->from('applicant');
         $this->db->where(['user_id' => $user_id]);
         return $this->db->get()->row_array();

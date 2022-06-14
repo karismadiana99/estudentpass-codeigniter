@@ -93,16 +93,24 @@
                         <div class="row">
                             <div class="text-center col-md-6">
 
-                                <button type="button" class="btn btn-success " data-toggle="modal"
+                                <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal"
                                     data-target="#approveModal" data-id="<?php echo $user['user_id']; ?>">
-                                    Approve Application
+                                    <span class="icon text-white-80">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                    <span class="text">Approve Application</span>
                                 </button>
                             </div>
+                            <div class="text-center col-md-6">
 
-                            <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#rejectModal"
-                                data-id="<?php echo $user['user_id']; ?>">
-                                Reject Application
-                            </button>
+                                <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal"
+                                    data-target="#rejectModal" data-id="<?php echo $user['user_id']; ?>">
+                                    <span class="icon text-white-80">
+                                        <i class="fa fa-times"></i>
+                                    </span>
+                                    <span class="text">Reject Application</span>
+                                </button>
+                            </div>
                         </div>
                         <br>
                         <br>
@@ -118,104 +126,101 @@
 </div>
 
 <!-- Modal Approval -->
-
-<!-- Modal -->
-<?php $no = 0;
-foreach ($applicant as $applicant1) : $no++; ?>
 <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" <?php echo $applicant['user_id']; ?>>Approve Application
+                <h5 class="modal-title" id="exampleModalLabel">Approve Application
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <?php echo form_open_multipart('admin/approveApp') ?>
-                <input type="hidden" name="user_id" value="<?php echo $applicant['user_id']; ?>">
+                <form action="<?= base_url('admin/approveApp/'); ?>" method="POST" autocomplete="off">
+                    <input type="hidden" name="user_id" value="<?php echo $applicant['user_id']; ?>">
+                    <div class="form-group">
+                        <label>Fullname:</label>
+                        <input type="text" name="app_fullname" class="form-control"
+                            value="<?php echo $applicant['app_fullname']; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>IC Number:</label>
+                        <input type="text" name="app_nric" class="form-control"
+                            value="<?php echo $applicant['app_nric']; ?>" readonly>
+                    </div>
+                    <div class=" form-group">
+                        <label>Issued Date:</label>
+                        <input type="date" name="issued_date" class="form-control"
+                            value="<?php echo $applicant['issued_date']; ?>">
+                        <div class="form-group">
+                            <label>Expired Date:</label>
+                            <input type="date" name="expired_date" class="form-control"
+                                value="<?php echo $applicant['expired_date']; ?>">
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label>Fullname:</label>
-                    <input type="text" name="app_fullname" class="form-control"
-                        value="<?php echo $applicant['app_fullname']; ?>">
-                </div>
-                <div class="form-group">
-                    <label>IC Number:</label>
-                    <input type="text" name="app_nric" class="form-control"
-                        value="<?php echo $applicant['app_nric']; ?>">
-                </div>
-                <div class=" form-group">
-                    <label>Issued Date:</label>
-                    <input type="date" name="issued_date" class="form-control"
-                        value="<?php echo $applicant['issued_date']; ?>">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-80">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            <span class="text">Approve</span>
+                        </button>
+                    </div>
+                </form>
 
-                </div>
-                <div class="form-group">
-                    <label>Expired Date:</label>
-                    <input type="date" name="expired_date" class="form-control"
-                        value="<?php echo $applicant['expired_date']; ?>">
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Approve</button>
-                <?php echo form_close() ?>
             </div>
         </div>
     </div>
 </div>
-<?php endforeach; ?>
+
 <!-- End Modal -->
 
 
 <!-- Modal Rejection -->
-
-<!-- Modal -->
-<?php $no = 0;
-foreach ($applicant as $applicant1) : $no++; ?>
 <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" <?php echo $applicant['user_id']; ?>>Reject Application
+                <h5 class="modal-title" id="exampleModalLabel">Reject Application
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <?php echo form_open_multipart('admin/approveApp') ?>
-                <input type="hidden" name="user_id" value="<?php echo $applicant['user_id']; ?>">
+                <form action="<?= base_url('admin/rejectApp/'); ?>" method="POST" autocomplete="off">
+                    <input type="hidden" name="user_id" value="<?php echo $applicant['user_id']; ?>">
 
-                <div class="form-group">
-                    <label>Fullname:</label>
-                    <input type="text" name="app_fullname" class="form-control"
-                        value="<?php echo $applicant['app_fullname']; ?>">
-                </div>
-                <div class="form-group">
-                    <label>IC Number:</label>
-                    <input type="text" name="app_nric" class="form-control"
-                        value="<?php echo $applicant['app_nric']; ?>">
-                </div>
-                <div class=" form-group">
-                    <label>Reason of Rejection:</label>
-                    <input type="text" name="reason_reject" class="form-control"
-                        value="<?php echo $applicant['reason_reject']; ?>">
+                    <div class="form-group">
+                        <label>Fullname:</label>
+                        <input type="text" name="app_fullname" class="form-control"
+                            value="<?php echo $applicant['app_fullname']; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>IC Number:</label>
+                        <input type="text" name="app_nric" class="form-control"
+                            value="<?php echo $applicant['app_nric']; ?>" readonly>
+                    </div>
+                    <div class=" form-group">
+                        <label>Reason of Rejection:</label>
+                        <input type="text" name="reason_reject" class="form-control"
+                            value="<?php echo $applicant['reason_reject']; ?>">
 
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary"
-                    href="<?= base_url(); ?>Admin/rejectApp/<?= $applicant['user_id']; ?>">Reject</button>
-                <?php echo form_close() ?>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger btn-icon-split">
+                            <span class="icon text-white-80">
+                                <i class="fa fa-times"></i>
+                            </span>
+                            <span class="text">Reject</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<?php endforeach; ?>
+
 <!-- End Modal -->

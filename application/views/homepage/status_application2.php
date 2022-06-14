@@ -57,6 +57,10 @@
                                 <label class="d-block font-weight-bold">Status of Application</label>
                                 <span class="d-block mb-3"><?= $applicant['app_status'] ?></span>
                             </div>
+                            <div class="form-group col-md-3">
+                                <label for="app_status" class="d-block font-weight-bold">Reason</label>
+                                <span class="d-block mb-3"><?= $applicant['reason_reject'] ?></span>
+                            </div>
                         </div>
                         <hr class="border border-info mb-3 mt-4">
                         <div class="text-center" href="<?= base_url('Apply/digitalPass') ?>">

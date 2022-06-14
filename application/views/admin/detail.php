@@ -20,9 +20,13 @@
                         <h5 class="font-weight-bold text-primary">A. Particular of Applicant</h5>
                         <hr>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label class="d-block font-weight-bold">Fullname</label>
                                 <span class="d-block mb-3"><?= $applicant['app_fullname'] ?></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="d-block font-weight-bold">Type Application</label>
+                                <span class="d-block mb-3"><?= $applicant['type_application'] ?></span>
                             </div>
                         </div>
                         <div class="row">

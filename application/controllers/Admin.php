@@ -93,23 +93,40 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function approveApp($user_id)
+    public function approveApp()
     {
         $data['title'] = 'Approve Application';
-        $data['user'] = $this->db->get_where('user', ['user_id' => $this->session->userdata('user_id')])->row_array();
 
-        $this->mUpdate->approveApplication($user_id);
+
+        $data = [
+            'app_fullname' => $this->input->post('app_fullname'),
+            'app_nric' => $this->input->post('app_nric'),
+            'issued_date' => $this->input->post('issued_date'),
+            'expired_date' => $this->input->post('expired_date'),
+            'app_status' => 'Approved',
+            'date_update' => time(),
+        ];
+
+        $this->db->where('user_id', $this->input->post('user_id'));
+        $this->db->update('applicant', $data);
+
+        redirect('admin');
     }
 
 
-    public function rejectApp($user_id)
+    public function rejectApp()
     {
-        $data['title'] = 'Reject Application';
-        $data['user'] = $this->db->get_where('user', ['user_id' => $this->session->userdata('user_id')])->row_array();
+        $data = [
+            'app_fullname' => $this->input->post('app_fullname'),
+            'app_nric' => $this->input->post('app_nric'),
+            'reason_reject' => $this->input->post('reason_reject'),
+            'app_status' => 'Rejected',
+            'date_update' => time(),
+        ];
 
-        if ($this->form_validation->run() == false) {
+        $this->db->where('user_id', $this->input->post('user_id'));
+        $this->db->update('applicant', $data);
 
-            $this->mUpdate->rejectApplication($user_id);
-        }
+        redirect('admin');
     }
 }

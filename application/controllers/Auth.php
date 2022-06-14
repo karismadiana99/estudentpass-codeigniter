@@ -106,12 +106,15 @@ class Auth extends CI_Controller
                 'date_created' => time()
             ];
             $this->db->insert('user', $data);
+
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
            Congratulation! Your account has been created. Please Login
           </div>');
             redirect('auth');
         }
     }
+
 
     public function logout()
     {
@@ -122,5 +125,15 @@ class Auth extends CI_Controller
             You have been logout!
            </div>');
         redirect('auth');
+    }
+
+    public function forgotPassword()
+    {
+
+        $data['title'] = 'Forgot Password';
+
+        $this->load->view('templates/auth_header', $data);
+        $this->load->view('auth/forgot-password');
+        $this->load->view('templates/auth_footer');
     }
 }
