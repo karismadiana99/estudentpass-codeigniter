@@ -52,19 +52,4 @@ class Renew_model extends CI_Model
         $this->db->where('user_id', $user_id);
         $this->db->update('study', $data);
     }
-
-
-    // public function updateDocument($nricid,)
-    // {
-    //     $data = [
-    //         'nric_id'=> $nricid,
-    //         'pic_passport' => $this->input->post('pic_passport'),
-    //         'pic_traveldoc' => $this->input->post('pic_traveldoc'),
-    //         'pic_nric' => $this->input->post('pic_nric'),
-    //         'pic_letter' => $this->input->post('pic_letter'),
-    //     ];
-    //     // echo json_encode($data);
-    //     $this->db->where('nric_id', $nricid);
-    //     $this->db->update('document', $data);
-    // }
 }

@@ -24,52 +24,65 @@
                 <div class="card shadow">
                     <div class="card-body mx-4">
                         <h5 class="m-0 font-weight-bold text-primary mb-4">F. Supporting Document</h5>
-                        <form method="POST" autocomplete="off" action='<?php echo base_url(); ?>'
-                            enctype='multipart/form-data'>
 
 
+                        <div class="row">
+                            <div class="col-lg-8">
 
-                            <div class="form-group ">
-                                <label for="profile_pic">Passport Picture</label>
-                                <br>
-                                <input type='file' name='profile_pic' class="form-control" size="20" required="">
+                                <?php echo form_open_multipart('apply/applyDocument'); ?>
+                                <div class="form-group row">
+                                    <label for="profile_pic" class="col-sm-3 col-form-label">Passport Picture</label>
+                                    <div class="col-sm-8">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="profile_pic"
+                                                name="profile_pic">
+                                            <label class="custom-file-label" for="profile_pic">Choose File</label>
+                                            <?= form_error('profile_pic', '<small class="text-danger">', '</small>') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="nric_pic" class="col-sm-3 col-form-label">Identification Card</label>
+                                    <div class="col-sm-8">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="nric_pic" name="nric_pic">
+                                            <label class="custom-file-label" for="nric_pic">Choose File</label>
+                                            <?= form_error('nric_pic', '<small class="text-danger">', '</small>') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="passport_pic" class="col-sm-3 col-form-label">Travel Document</label>
+                                    <div class="col-sm-8">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="passport_pic"
+                                                name="passport_pic">
+                                            <label class="custom-file-label" for="passport_pic">Choose File</label>
+                                            <?= form_error('passport_pic', '<small class="text-danger">', '</small>') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="letter_pic" class="col-sm-3 col-form-label">Offer Letter</label>
+                                    <div class="col-sm-8">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="letter_pic"
+                                                name="letter_pic">
+                                            <label class="custom-file-label" for="letter_pic">Choose File</label>
+                                            <?= form_error('letter_pic', '<small class="text-danger">', '</small>') ?>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <br>
-                            <!-- <div class="form-group ">
-                                <label for="passport_doc">
-                                    Passport/Limited Travel Document
-                                </label>
-                                (Photocopy of entry details either stamped in passport or white slip issued by
-                                Immigration
-                                Officer at the airport)<br>
-                                <input type='file' name='passport_doc' size='20' multiple="">
-                            </div>
-                            <br>
-                            <div class="form-group ">
-                                <label for="ic_doc">Malaysian Identification Card</label>
-                                (Photocopy of Malaysian Identification Card - Front and Back)<br>
-                                <input type='file' name='ic_doc' size='20' multiple="">
-                            </div>
-                            <br>
-                            <div class="form-group ">
-                                <label for="offer_doc">Offer Letter</label>
-                                (Photocopy of Offer letter that has been confirmed by the IPT/IPTS)<br>
-                                <input type='file' name='offer_doc' size='20' multiple="">
-                            </div> -->
-                            <br>
+                        </div>
 
-                            <hr class="border border-info mb-3 mt-4">
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-icon-split" name="document_save">
-                                    <span class="icon text-white-80">
-                                        <i class="far fa-save fa-lg"></i>
-                                    </span>
-                                    <span class="text">Save and Submit</span>
-                                </button>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Save and Submit</button>
                             </div>
+                        </div>
 
-                        </form>
                     </div>
                 </div>
             </div>

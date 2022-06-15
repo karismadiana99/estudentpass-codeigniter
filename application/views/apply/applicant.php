@@ -50,11 +50,11 @@
                                 <label for="app_gender">Gender</label>
                                 <select id="app_gender" name="app_gender" class="form-control">
                                     <option value="" selected>Choose</option>
-                                    <option value="Male" <?= set_value('app_gender') == 'Male' ? 'selected' : '' ?>>
-                                        Male
+                                    <option value="MALE" <?= set_value('app_gender') == 'MALE' ? 'selected' : '' ?>>
+                                        MALE
                                     </option>
-                                    <option value="Female" <?= set_value('app_gender') == 'Female' ? 'selected' : '' ?>>
-                                        Female
+                                    <option value="FEMALE" <?= set_value('app_gender') == 'FEMALE' ? 'selected' : '' ?>>
+                                        FEMALE
                                     </option>
                                 </select>
                                 <?= form_error('app_gender', '<small class="text-danger">', '</small>') ?>
@@ -63,13 +63,13 @@
                                 <label for="app_nationality">Nationality</label>
                                 <select id="app_nationality" name="app_nationality" class="form-control">
                                     <option value="" selected>Choose</option>
-                                    <option value="Malaysia"
-                                        <?= set_value('app_nationality') == 'Malaysia' ? 'selected' : '' ?>>
-                                        Malaysia
+                                    <option value="MALAYSIA"
+                                        <?= set_value('app_nationality') == 'MALAYSIA' ? 'selected' : '' ?>>
+                                        MALAYSIA
                                     </option>
-                                    <option value="Others"
-                                        <?= set_value('app_nationality') == 'Others' ? 'selected' : '' ?>>
-                                        Others
+                                    <option value="OTHERS"
+                                        <?= set_value('app_nationality') == 'OTHERS' ? 'selected' : '' ?>>
+                                        OTHERS
                                     </option>
                                 </select>
                                 <?= form_error('app_nationality', '<small class="text-danger">', '</small>') ?>

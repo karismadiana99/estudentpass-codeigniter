@@ -36,20 +36,20 @@
                                     <label for="level_course">Level of Course</label>
                                     <select id="level_course" name="level_course" class="form-control">
                                         <option value="" selected>Choose</option>
-                                        <option value="Phd" <?= set_value('level_course') == 'Phd' ? 'selected' : '' ?>>
-                                            Phd
+                                        <option value="PHD" <?= set_value('level_course') == 'PHD' ? 'selected' : '' ?>>
+                                            PHD
                                         </option>
-                                        <option value="Master"
-                                            <?= set_value('level_course') == 'Master' ? 'selected' : '' ?>>
-                                            Master
+                                        <option value="MASTER"
+                                            <?= set_value('level_course') == 'MASTER' ? 'selected' : '' ?>>
+                                            MASTER
                                         </option>
-                                        <option value="Degree"
-                                            <?= set_value('level_course') == 'Degree' ? 'selected' : '' ?>>
-                                            Degree
+                                        <option value="DEGREE"
+                                            <?= set_value('level_course') == 'DEGREE' ? 'selected' : '' ?>>
+                                            DEGREE
                                         </option>
-                                        <option value="Diploma"
-                                            <?= set_value('level_course') == 'Diploma' ? 'selected' : '' ?>>
-                                            Diploma
+                                        <option value="DIPLOMA"
+                                            <?= set_value('level_course') == 'DIPLOMA' ? 'selected' : '' ?>>
+                                            DIPLOMA
                                         </option>
                                         <option value="School"
                                             <?= set_value('level_course') == 'School' ? 'selected' : '' ?>>
@@ -62,13 +62,13 @@
                                     <label for="type_institution">Type of Institution</label>
                                     <select id="type_institution" name="type_institution" class="form-control">
                                         <option value="" selected>Choose</option>
-                                        <option value="Government"
-                                            <?= set_value('type_institution') == 'Government' ? 'selected' : '' ?>>
-                                            Government
+                                        <option value="GOVERNMENT"
+                                            <?= set_value('type_institution') == 'GOVERNMENT' ? 'selected' : '' ?>>
+                                            GOVERNMENT
                                         </option>
-                                        <option value="Private"
-                                            <?= set_value('type_institution') == 'Private' ? 'selected' : '' ?>>
-                                            Private
+                                        <option value="PRIVATE"
+                                            <?= set_value('type_institution') == 'PRIVATE' ? 'selected' : '' ?>>
+                                            PRIVATE
                                         </option>
                                     </select>
                                     <?= form_error('type_institution', '<small class="text-danger">', '</small>') ?>

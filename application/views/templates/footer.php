@@ -75,7 +75,6 @@
 </div>
 
 
-
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/asset-auth/'); ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url('assets/asset-auth/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js">
@@ -94,6 +93,13 @@
 <script src="<?= base_url('assets/asset-auth/'); ?>js/sb-admin-2.min.js"></script>
 <script src="<?= base_url('assets/asset-auth/'); ?>js/script.js"></script>
 
+<script>
+$('.custom-file-input').on('change', function() {
+    let fileName = $(this).val().split('\\').pop();
+    $(this).next('.custom-file-label').addClass("selected").html(fileName);
+
+});
+</script>
 </body>
 
 </html>

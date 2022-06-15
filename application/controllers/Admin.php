@@ -67,7 +67,7 @@ class Admin extends CI_Controller
         $data['applicant'] = $this->mView->getApplicant($id);
         $data['passport'] = $this->mView->getPassport($id);
         $data['study'] = $this->mView->getStudy($id);
-        // $data['document'] = $this->mView->getDocument($id);
+        $data['document'] = $this->mView->getDocument($id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -84,7 +84,7 @@ class Admin extends CI_Controller
         $data['applicant'] = $this->mView->getApplicant($id);
         $data['passport'] = $this->mView->getPassport($id);
         $data['study'] = $this->mView->getStudy($id);
-        // $data['document'] = $this->mView->getDocument($id);
+        $data['document'] = $this->mView->getDocument($id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

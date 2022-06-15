@@ -31,13 +31,13 @@
                                 <label for="type_travel">Type of Travel Document</label>
                                 <select id="type_travel" name="type_travel" class="form-control">
                                     <option value="" selected>Choose</option>
-                                    <option value="Passport"
-                                        <?= set_value('type_travel') == 'Passport' ? 'selected' : '' ?>>
-                                        Passport
+                                    <option value="PASSPORT"
+                                        <?= set_value('type_travel') == 'PASSPORT' ? 'selected' : '' ?>>
+                                        PASSPORT
                                     </option>
-                                    <option value="Restricted Travel Document"
-                                        <?= set_value('type_travel') == 'Restricted Travel Document' ? 'selected' : '' ?>>
-                                        Restricted Travel Document
+                                    <option value="RESTRICTED TRAVEL DOCUMENT"
+                                        <?= set_value('type_travel') == 'RESTRICTED TRAVEL DOCUMENT' ? 'selected' : '' ?>>
+                                        RESTRICTED TRAVEL DOCUMENT
                                     </option>
                                 </select>
                                 <?= form_error('type_travel', '<small class="text-danger">', '</small>') ?>

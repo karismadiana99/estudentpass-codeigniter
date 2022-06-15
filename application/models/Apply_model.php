@@ -45,17 +45,4 @@ class Apply_model extends CI_Model
         ];
         $this->db->insert('study', $student);
     }
-
-    public function addDocument($user_id)
-    {
-        $student = [
-            'user_id' => $user_id,
-            'profile_pic' => $this->input->post('profile_pic'),
-            'nric_picture' => strtoupper($this->input->post('nric_picture')),
-            'passport_pic' => $this->input->post('passport_pic'),
-            'letter_pic' => strtoupper($this->input->post('letter_pic')),
-
-        ];
-        $this->db->insert('document', $student);
-    }
 }

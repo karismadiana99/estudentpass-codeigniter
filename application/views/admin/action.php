@@ -87,6 +87,34 @@
                                 <span class="d-block mb-3"><?= $study['name_course'] ?></span>
                             </div>
                         </div>
+                        <h5 class="font-weight-bold text-primary">D. Supporting Document</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label class="d-block font-weight-bold">Passport Picture</label>
+                                <img class="img-thumbnail" height="150px" width="110px"
+                                    src=<?= base_url('documents/') . $document['profile_pic']; ?>>
+
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="d-block font-weight-bold">Identification Card</label>
+                                <img class="img-thumbnail" height="150px" width="110px"
+                                    src=<?= base_url('documents/') . $document['nric_pic']; ?>>
+
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="d-block font-weight-bold">Travel DOcument</label>
+                                <img class="img-thumbnail" height="150px" width="110px"
+                                    src=<?= base_url('documents/') . $document['passport_pic']; ?>>
+
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="d-block font-weight-bold">Offer Letter</label>
+                                <img class="img-thumbnail" height="150px" width="110px"
+                                    src=<?= base_url('documents/') . $document['letter_pic']; ?>>
+
+                            </div>
+                        </div>
 
                         <hr class="border border-info mb-3 mt-4">
                         <br>
@@ -112,6 +140,7 @@
                                 </button>
                             </div>
                         </div>
+
                         <br>
                         <br>
                         <br>

@@ -121,45 +121,86 @@ class Apply extends CI_Controller
 
         $data['user'] = $this->mForm->getUser($userquery['user_id']);
 
-        $config['upload_path']          = './documents/';
-        $config['allowed_types']        = 'gif|jpg|png|pdf';
-        $config['max_size']             = 10000;
-        $config['max_width']            = 10000;
-        $config['max_height']           = 10000;
+        $this->form_validation->set_rules('profile_pic', 'Passport Picture', 'trim');
 
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('userfile')) {
-            echo "Unsuccessfully Uploaded.";
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('apply/document', $data);
+            $this->load->view('templates/footer');
         } else {
-            $profile_pic = $this->upload->data();
-            $profile_pic = $profile_pic['file_name'];
 
-            $data = array(
-                'profile_pic' => $profile_pic,
-            );
-            $this->db->insert('document', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> The file have been uploaded! </div>');
+            //check if you have file to upload
+            $upload_file = $_FILES['profile_pic']['name'];
+            if ($upload_file) {
+                $config['upload_path']          = './documents/';
+                $config['allowed_types']        = 'jpg|png|pdf|docx|doc';
+                $config['max_size']             = 10000;
+                $config['max_width']            = 10000;
+                $config['max_height']           = 10000;
+
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('profile_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'profile_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->insert('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+
+                if ($this->upload->do_upload('nric_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'nric_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->update('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+
+                if ($this->upload->do_upload('passport_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'passport_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->update('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+
+                if ($this->upload->do_upload('letter_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'letter_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->update('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+            }
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Your Application have been submitted!
+           </div>');
             redirect('Apply/statusAppProcess/' . $this->input->post('user_id'));
         }
-
-        // $this->form_validation->set_rules('profile_pic', 'Profile Picture', 'required|trim');
-        // $this->form_validation->set_rules('nric_pic', 'IC Picture', 'required|trim');
-        // $this->form_validation->set_rules('passport_pic', 'Passport Picture', 'required|trim');
-        // $this->form_validation->set_rules('letter_pic', 'Offer Letter Picture', 'required|trim');
-
-        // if ($this->form_validation->run() == false) {
-        //     $this->load->view('templates/header', $data);
-        //     $this->load->view('templates/topbar', $data);
-        //     $this->load->view('apply/document', $data);
-        //     $this->load->view('templates/footer');
-        // } else {
-        //     $this->mApply->addStudy($userquery['user_id']);
-        //     redirect('Apply/statusAppProcess/' . $this->input->post('user_id'));
-        // }
     }
-
-
 
     public function statusAppProcess()
     {
@@ -238,8 +279,6 @@ class Apply extends CI_Controller
         $userquery = $this->db->get_where('user', ['user_id' => $this->session->userdata('user_id')])->row_array();
         $data['user'] = $userquery['user_id'];
 
-        // var_dump($data['user']);
-        // die;
         $data['user'] = $this->mForm->getUser($userquery['user_id']);
         $data['applicant'] = $this->mForm->getApplicant($userquery['user_id']);
         $data['passport'] = $this->mForm->getPassport($userquery['user_id']);
@@ -322,8 +361,6 @@ class Apply extends CI_Controller
         $userquery = $this->db->get_where('user', ['user_id' => $this->session->userdata('user_id')])->row_array();
         $data['user'] = $userquery['user_id'];
 
-        // var_dump($data['user']);
-        // die;
         $data['user'] = $this->mForm->getUser($userquery['user_id']);
         $data['applicant'] = $this->mForm->getApplicant($userquery['user_id']);
         $data['passport'] = $this->mForm->getPassport($userquery['user_id']);
@@ -396,7 +433,101 @@ class Apply extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->mRenew->updateStudy($userquery['user_id']);
-            redirect('apply/statusAppProcess/' . $this->input->post('user_id'));
+            redirect('apply/renewDocument/' . $this->input->post('user_id'));
+        }
+    }
+
+    public function renewDocument()
+    {
+        $data['title'] = 'Renew Student Pass';
+        $userquery = $this->db->get_where('user', ['user_id' => $this->session->userdata('user_id')])->row_array();
+        $data['user'] = $userquery['user_id'];
+
+        $data['user'] = $this->mForm->getUser($userquery['user_id']);
+        $data['user'] = $this->mForm->getUser($userquery['user_id']);
+        $data['applicant'] = $this->mForm->getApplicant($userquery['user_id']);
+        $data['passport'] = $this->mForm->getPassport($userquery['user_id']);
+        $data['study'] = $this->mForm->getStudy($userquery['user_id']);
+        $data['document'] = $this->mForm->getDocument($userquery['user_id']);
+
+        $this->form_validation->set_rules('profile_pic', 'Passport Picture', 'trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('apply/document', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            //check if you have file to upload
+            $upload_file = $_FILES['profile_pic']['name'];
+            if ($upload_file) {
+                $config['upload_path']          = './documents/';
+                $config['allowed_types']        = 'jpg|png|pdf|docx|doc';
+                $config['max_size']             = 10000;
+                $config['max_width']            = 10000;
+                $config['max_height']           = 10000;
+
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('profile_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'profile_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->update('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+
+                if ($this->upload->do_upload('nric_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'nric_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->update('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+
+                if ($this->upload->do_upload('passport_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'passport_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->update('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+
+                if ($this->upload->do_upload('letter_pic')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    $data = [
+                        'user_id' => $userquery['user_id'],
+                        'letter_pic' => $new_file,
+                    ];
+                    $this->db->where('user_id', $userquery['user_id']);
+                    $this->db->update('document', $data);
+                } else {
+                    echo $this->upload->display_erros();
+                }
+            }
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Your Application have been submitted!
+           </div>');
+            redirect('Apply/statusAppProcess/' . $this->input->post('user_id'));
         }
     }
 }

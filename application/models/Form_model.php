@@ -35,11 +35,12 @@ class Form_model extends CI_Model
         return $this->db->get()->row_array();
     }
 
-    // public function getDocument($user_id)
-    // {
-    //     $this->db->select('pic_passport, pic_traveldoc, pic_nric, pic_letter');
-    //     $this->db->from('document');
-    //     $this->db->where(['user_id' => $user_id]);
-    //     return $this->db->get()->row_array();
-    // }
+    public function getDocument($user_id)
+    {
+
+        $this->db->select('profile_pic, nric_pic, passport_pic, letter_pic');
+        $this->db->from('document');
+        $this->db->where(['user_id' => $user_id]);
+        return $this->db->get()->row_array();
+    }
 }
