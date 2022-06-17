@@ -53,7 +53,7 @@
                                         </option>
                                         <option value="School"
                                             <?= set_value('level_course') == 'School' ? 'selected' : '' ?>>
-                                            School
+                                            SCHOOL
                                         </option>
                                     </select>
                                     <?= form_error('type_travel', '<small class="text-danger">', '</small>') ?>

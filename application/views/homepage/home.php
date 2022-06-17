@@ -35,9 +35,9 @@
     <!-- Title student Pass-->
     <aside class="text-center bg-gradient-primary-to-secondary">
         <div class="container px-5">
-            <div class="row gx-5 justify-content-center">
+            <div class="row gx-4 justify-content-center">
                 <div class="col-xl-6">
-                    <div class="h2 fs-1 text-white mb-4">Digital Student Pass</div>
+                    <div class="h2 fs-1 text-white mb-3">eStudent Pass Application</div>
                 </div>
             </div>
         </div>
@@ -46,8 +46,30 @@
     <!-- Home section-->
     <section id="home">
         <div class="container px-5">
-            <h2 class="text-center text-primary font-alt mb-4">eStudent Pass Application Procedure</h2>
+            <h3 class="text-center  font-alt mb-4">OVERVIEW</h3>
+            <h5 class="text-center">All local student from peninsula Malaysia or Sabah who wish to pursue their
+                education in any level of education in
+                Sarawak are required to apply for a Student Pass from the Department of Immigration Malaysia.</h5>
         </div>
+        <br>
+        <div class="container px-5">
+            <center><a href="<?= base_url('Auth') ?>" class="btn btn-primary"><span><i
+                            class="bi bi-plus-circle-fill"></i>
+                        &nbsp;&nbsp;</span>
+                    Apply eStudent Pass</a></center>
+        </div>
+        <br>
+        <br>
+        <div class="container px-5">
+            <h5 class="text-center">Student pass application is submitted by eStudent Pass Application and students are
+                allowed to enter after obtaining approval.</h5>
+            <br>
+            <h5 class="text-center font-alt">List of supporting document required to apply eStudent Pass Application is:
+            </h5>
+            <h5 class="text-center">Applicant's picture, Identification Card picture , Passport picture , Offer letter
+                from university/college/school</h5>
+        </div>
+        <br>
     </section>
 
 
@@ -56,8 +78,64 @@
         <div class="container px-5">
             <h2 class="text-center text-primary font-alt mb-4">Frequently Asked Questions For eStudent Pass</h2>
             <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
-
             </div>
+        </div>
+        <br>
+        <br>
+        <div class="container px-5">
+            <h5 class="font-alt">1. &nbsp;I am a Malaysian (Non-Sarawakian) student. Do I need to apply a student
+                pass?</h5>
+            <h5> Yes, all Malaysian Non- Sarawakian (West Malaysian, Labuan and Sabahan) must apply
+                for the
+                student
+                pass.
+            </h5>
+            <br>
+            <h5 class="font-alt">2. &nbsp;Why do I need a student pass? I am Malaysian (Non-Sarawakian).</h5>
+            <h5>This is a mandatory requirement by the Immigration Sarawak, Malaysia. A student pass
+                permits you to remian in Sarawak, Malaysia to study in Sarawak, Malaysia. A student pass will be show
+                together with your passport when you enter Sarawak, Malaysia.
+            </h5>
+            <br>
+            <h5 class="font-alt">3. &nbsp;Can I just stay in Sarawak with the Social Visitor Pass and not applying for a
+                student pass?</h5>
+            <h5>No. The Social Visit Pass is only for the purpose of social visit. It is considered
+                violating the Sarawak Immigration law for student studying and staying in Sarawak with the Social Visit
+                Pass.
+            </h5>
+            <br>
+            <h5 class="font-alt">4. &nbsp;What if I still have a valid student pass from the previous
+                college/university?</h5>
+            <h5>Student must cancel their previous student pass. Kindly contact your previous institution on
+                cancellation process.
+            </h5>
+            <br>
+            <h5 class="font-alt">5. &nbsp;When should I apply for the student pass?</h5>
+            <h5>New undergraduate students must apply for the student pass during orientation week. There will be a
+                session during orientation week for the student to come to Student Services to apply for the Student
+                Pass. A postgraduate student may apply for the student pass during the registration.
+            </h5>
+            <br>
+            <h5 class="font-alt">6. &nbsp;Can I use Malaysian International Passport (Red Passport) to apply for the
+                student pass?</h5>
+            <h5>No. Students must apply for Malaysian Blue Passport (DPT) at their hometown before they enter Sarawak.
+                The Malaysia Blue Passport (DPT) is a valid travel document for the purposes of entering, exiting and
+                living temporarily in East Malaysia for a period exceeding 3 months. The Malaysian International
+                Passport.(Red Passport) is for the purpose of travelling abroad.
+            </h5>
+            <br>
+            <h5 class="font-alt">7. &nbsp;What documents do I need to prepared to apply for the new student pass
+                application?</h5>
+            <h5>The documents required to prepared are Applicant's picture, Identification Card picture , Passport
+                picture , Offer letter
+                from university/college/school
+            </h5>
+            <br>
+            <h5 class="font-alt">8. &nbsp;What if my studnet pass has expired?</h5>
+            <h5>A penalty of RM100 will be fine for expired student pass. Please renew your student pass before the
+                student pass expiry date at eStudent Pass Application.
+            </h5>
+            <br>
         </div>
     </section>
 

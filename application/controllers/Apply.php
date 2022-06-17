@@ -463,7 +463,7 @@ class Apply extends CI_Controller
             $upload_file = $_FILES['profile_pic']['name'];
             if ($upload_file) {
                 $config['upload_path']          = './documents/';
-                $config['allowed_types']        = 'jpg|png|pdf|docx|doc';
+                $config['allowed_types']        = 'jpg|png|jpeg';
                 $config['max_size']             = 10000;
                 $config['max_width']            = 10000;
                 $config['max_height']           = 10000;
